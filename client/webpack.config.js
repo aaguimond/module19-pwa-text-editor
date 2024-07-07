@@ -25,13 +25,10 @@ module.exports = () => {
         title: 'JATE'
       }),
 
-      // Generate the service worker file
-      new GenerateSW(),
-
       // Inject custom service worker
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'service-worker.js',
+        swDest: 'src-sw.js',
       }),
 
       // Create manifest file for PWA

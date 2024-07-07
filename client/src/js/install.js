@@ -4,9 +4,13 @@ const butInstall = document.getElementById('buttonInstall');
 // TODO: Add an event handler to the `beforeinstallprompt` event
 window.addEventListener('beforeinstallprompt', (event) => {
     
+    event.preventDefault();
+
     window.deferredPrompt = event;
 
     butInstall.style.display = 'block';
+
+    console.log('beforeinstallprompt event fired and stored');
 });
 
 // TODO: Implement a click event handler on the `butInstall` element
@@ -21,9 +25,9 @@ butInstall.addEventListener('click', async () => {
     // show install prompt
     promptEvent.prompt();
     // wait for user's decision to prompt
-    const { userDecision } = await promptEvent.userChoice;
+    const result = await promptEvent.userChoice;
     // log user's decision for dev analytics
-    console.log(`User response to the install prompt: ${userDecision}`);
+    console.log(`User response to the install prompt: ${result.outcome}`);
     // discard prompt after use
     window.deferredPrompt = null;
     // hide install button

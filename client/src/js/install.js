@@ -3,13 +3,13 @@ const butInstall = document.getElementById('buttonInstall');
 // Logic for installing the PWA
 // TODO: Add an event handler to the `beforeinstallprompt` event
 window.addEventListener('beforeinstallprompt', (event) => {
-    
+    // prevent mini infobar from appearing on mobile devices
     event.preventDefault();
-
+    // stash event for later functions
     window.deferredPrompt = event;
-
+    // remove the hidden class from the install button
     butInstall.style.display = 'block';
-
+    // for dev: logging that the function successfully completed
     console.log('beforeinstallprompt event fired and stored');
 });
 
@@ -19,6 +19,7 @@ butInstall.addEventListener('click', async () => {
     const promptEvent = window.deferredPrompt;
     // If no event found, log to console for dev analytics and break
     if (!promptEvent) {
+        // for dev: logging if promptEvent was not correctly passed
         console.log('No prompt event passed to click event handler in install.js');
         return;
     }

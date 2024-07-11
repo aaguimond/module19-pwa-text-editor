@@ -2,8 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest, GenerateSW } = require('workbox-webpack-plugin');
-const { exclude } = require('inquirer/lib/objects/separator');
-const { plugin } = require('mongoose');
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
@@ -39,6 +37,7 @@ module.exports = () => {
         background_color: '#CC7832',
         theme_color: '#CC7832',
         start_url: './',
+        id: '/',
         publicPath: './',
         icons: [
           {
